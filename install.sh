@@ -62,7 +62,7 @@ upload_proxy() {
 }
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
-        echo "usr$(random)/pass$(random)/$IP4/$port/$(gen64 $IP6)"
+        echo "1st_proxy_$(random)/pass$(random)/$IP4/$port/$(gen64 $IP6)"
     done
 }
 
@@ -115,5 +115,3 @@ EOF
 bash /etc/rc.local
 
 gen_proxy_file_for_user
-
-upload_proxy
