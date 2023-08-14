@@ -13,9 +13,11 @@ gen64() {
 }
 install_3proxy() {
     echo "installing 3proxy"
-    cat 3proxy-0.9.4.tar.gz | bsdtar -xvf-
+    URL="https://github.com/hiddenway/proxy_multi_proxy_ipv6/raw/main/3proxy-0.9.4.tar.gz"
+    wget -qO- $URL | bsdtar -xvf-
     cd 3proxy-0.9.4
-    make -f Makefile.Linux
+    ln -s Makefile.Linux Makefile
+    sudo make install
     mkdir -p /usr/local/etc/3proxy/{bin,logs,stat}
     cp src/3proxy /usr/local/etc/3proxy/bin/
     cp ./scripts/rc.d/proxy.sh /etc/init.d/3proxy
